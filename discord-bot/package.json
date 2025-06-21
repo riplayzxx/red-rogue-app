@@ -4,7 +4,8 @@
   "description": "Discord bot for Red Rogue server",
   "main": "bot.js",
   "scripts": {
-    "start": "node bot.js"
+    "start": "node bot.js",
+    "dev": "node bot.js"
   },
   "dependencies": {
     "discord.js": "^14.13.0",
@@ -12,5 +13,6 @@
   },
   "engines": {
     "node": ">=16.9.0"
-  }
+  },
+  "type": "commonjs"
 }

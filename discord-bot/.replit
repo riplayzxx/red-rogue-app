@@ -1,20 +1,13 @@
-run = "npm start"
 entrypoint = "bot.js"
-
-[packager]
-language = "nodejs"
-
-[packager.features]
-packageSearch = true
-guessImports = true
-enabledForHosting = false
-
-[env]
-XDG_CONFIG_HOME = "/home/runner/.config"
-PATH = "/home/runner/$REPL_SLUG/.config/npm/node_global/bin:/home/runner/$REPL_SLUG/node_modules/.bin"
+modules = ["nodejs-20"]
 
 [nix]
-channel = "stable-22_11"
+channel = "stable-24_05"
 
-[gitHubImport]
-requiredFiles = [".replit", "replit.nix", ".config"]
+[unitTest]
+language = "nodejs"
+
+[deployment]
+run = ["node", "bot.js"]
+deploymentTarget = "cloudrun"
+ignorePorts = false

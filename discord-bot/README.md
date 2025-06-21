@@ -10,11 +10,12 @@ This bot runs on Replit and provides commands and features for your Discord serv
    - Choose "Node.js" template
    - Name it "red-rogue-bot"
 
-2. **Upload these files:**
-   - `bot.js` - Main bot code
-   - `package.json` - Dependencies
-   - `.replit` - Replit configuration
-   - `keep_alive.js` - Optional keep-alive server
+2. **Configure the Repl:**
+   - Upload all files from this folder
+   - In the Configuration pane (left sidebar):
+     - Set "Run command" to: `npm start`
+     - Or simply: `node bot.js`
+   - Click "Done"
 
 3. **Run the bot:**
    - Click the "Run" button
