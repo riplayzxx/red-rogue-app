@@ -63,7 +63,7 @@ export default async function handler(req, res) {
         };
         
         // If you have a bot token, you can fetch more detailed stats:
-        const BOT_TOKEN = process.env.DISCORD_BOT_TOKEN;
+        const BOT_TOKEN = process.env.DISCORD_BOT_TOKEN?.trim();
         
         if (BOT_TOKEN) {
             try {
