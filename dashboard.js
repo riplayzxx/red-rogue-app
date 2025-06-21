@@ -78,11 +78,13 @@ async function fetchServerData(token) {
         
         if (!response.ok) {
             // If API fails, show mock data for demo
+            console.error('API failed:', response.status);
             displayMockServerData();
             return;
         }
         
         const data = await response.json();
+        console.log('Server data received:', data);
         displayServerData(data);
     } catch (err) {
         console.error('Error fetching server data:', err);
@@ -160,6 +162,13 @@ function displayServerData(data) {
     }
     if (data.premiumSubscriptionCount !== undefined) {
         document.getElementById('boostCount').textContent = data.premiumSubscriptionCount;
+    }
+    
+    // Calculate server creation date from ID
+    if (data.id) {
+        const creationTimestamp = Number(BigInt(data.id) >> 22n) + 1420070400000;
+        const creationDate = new Date(creationTimestamp);
+        document.getElementById('serverCreated').textContent = creationDate.toLocaleDateString();
     }
     
     // Display channels if available
