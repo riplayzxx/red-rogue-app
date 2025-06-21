@@ -8,8 +8,8 @@ export default async function handler(req, res) {
     }
     
     try {
-        // Test bot token by fetching guild info
-        const response = await fetch(`https://discord.com/api/v10/guilds/${GUILD_ID}`, {
+        // Test bot token by fetching guild info with counts
+        const response = await fetch(`https://discord.com/api/v10/guilds/${GUILD_ID}?with_counts=true`, {
             headers: {
                 Authorization: `Bot ${BOT_TOKEN.trim()}` // Trim any whitespace
             }

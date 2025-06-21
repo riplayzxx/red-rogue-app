@@ -154,7 +154,29 @@ function displayServerData(data) {
     document.getElementById('channelCount').textContent = data.channelCount || '0';
     document.getElementById('roleCount').textContent = data.roleCount || '0';
     
-    // Display other data...
+    // Display server info
+    if (data.premiumTier !== undefined) {
+        document.getElementById('boostLevel').textContent = `Level ${data.premiumTier}`;
+    }
+    if (data.premiumSubscriptionCount !== undefined) {
+        document.getElementById('boostCount').textContent = data.premiumSubscriptionCount;
+    }
+    
+    // Display channels if available
+    if (data.channels && data.channels.length > 0) {
+        const channelList = document.getElementById('channelList');
+        channelList.innerHTML = data.channels.slice(0, 5).map(channel => 
+            `<li class="channel-item"><span class="channel-icon">#</span> ${channel.name}</li>`
+        ).join('');
+    }
+    
+    // Display roles if available
+    if (data.roles && data.roles.length > 0) {
+        const roleList = document.getElementById('roleList');
+        roleList.innerHTML = data.roles.map(role => 
+            `<span class="role-badge" style="background: #${role.color.toString(16).padStart(6, '0')}22; color: #${role.color.toString(16).padStart(6, '0')}; border: 1px solid #${role.color.toString(16).padStart(6, '0')}44;">${role.name}</span>`
+        ).join('');
+    }
 }
 
 function showError(message) {
